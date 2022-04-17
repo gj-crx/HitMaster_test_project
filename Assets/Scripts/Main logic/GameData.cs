@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GameData
 {
     public static int CurrentLevel = 0;
-    public static Level[] Levels = new Level[3];
+    public static Level[] Levels;
 
 
     public static int GetIndexOutOfName(string s)

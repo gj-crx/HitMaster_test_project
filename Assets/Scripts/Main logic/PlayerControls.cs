@@ -11,7 +11,15 @@ public static class PlayerControls
 
     public static void PlayerTapProcessing()
     { //handling players input
-        Shoot();
+        if (GameData.CurrentLevel == 0)
+        {
+            GameData.CurrentLevel = 1;
+            gc.PlayerCharacterAgent.destination = GameData.Levels[GameData.CurrentLevel].LevelWayPoint;
+        }
+        else
+        {
+            Shoot();
+        }
     }
     private static void Shoot()
     {
@@ -31,7 +39,7 @@ public static class PlayerControls
         gc.PlayerCharacterAnimator.SetFloat("Speed", gc.PlayerCharacterAgent.velocity.sqrMagnitude);
         if (gc.PlayerCharacterAgent.pathStatus == NavMeshPathStatus.PathComplete && gc.PlayerCharacterAgent.remainingDistance == 0)
         { //if agent is arrived or not moving
-            if (GameData.Levels[GameData.CurrentLevel].EnemiesCount <= 0)
+            if (GameData.Levels[GameData.CurrentLevel].EnemiesCount <= 0 && GameData.CurrentLevel != -0)
             {
                 //all enemies killed, going to next level
                 GameData.CurrentLevel++;
