@@ -16,13 +16,14 @@ public static class PlayerControls
     private static void Shoot()
     {
         GameObject bullet = GameObject.Instantiate(gc.BulletPrefab, gc.BulletSpawnPoint.position, Quaternion.identity);
+        float force = bullet.GetComponent<Bullet>().Speed;
         if (PhoneControls)
         {
-            bullet.GetComponent<Rigidbody>().AddForce(Camera.main.ScreenPointToRay(Input.touches[0].position).direction * 350);
+            bullet.GetComponent<Rigidbody>().AddForce(Camera.main.ScreenPointToRay(Input.touches[0].position).direction * force);
         }
         else
         {
-            bullet.GetComponent<Rigidbody>().AddForce(Camera.main.ScreenPointToRay(Input.mousePosition).direction * 350);
+            bullet.GetComponent<Rigidbody>().AddForce(Camera.main.ScreenPointToRay(Input.mousePosition).direction * force);
         }
     }
     public static void PlayerStanceCheck()
