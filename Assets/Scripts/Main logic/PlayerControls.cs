@@ -29,7 +29,7 @@ public static class PlayerControls
     {
         gc.PlayerCharacterAnimator.SetFloat("Speed", gc.PlayerCharacterAgent.velocity.sqrMagnitude);
         if (gc.PlayerCharacterAgent.pathStatus == NavMeshPathStatus.PathComplete && gc.PlayerCharacterAgent.remainingDistance == 0)
-        {
+        { //if agent is arrived or not moving
             if (GameData.Levels[GameData.CurrentLevel].EnemiesCount <= 0)
             {
                 //all enemies killed, going to next level
